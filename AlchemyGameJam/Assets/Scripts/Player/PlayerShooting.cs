@@ -27,6 +27,6 @@ public class PlayerShooting : MonoBehaviour
         Vector2 dir = (worldPos - (Vector2)firePoint.position).normalized;
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        projectile.GetComponent<Projectile>().Init(dir, projectileSpeed);
+        projectile.GetComponent<Projectile>().Init(dir, projectileSpeed, gameObject);
     }
 }
