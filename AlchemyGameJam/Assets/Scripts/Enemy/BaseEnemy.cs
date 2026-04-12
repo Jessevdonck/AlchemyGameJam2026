@@ -1,7 +1,8 @@
 using System;
+using Interfaces;
 using UnityEngine;
 
-public abstract class BaseEnemy : MonoBehaviour
+public abstract class BaseEnemy : MonoBehaviour, IDamageable
 {
     [Header("Stats")]
     [SerializeField] protected EnemyStats stats;
@@ -25,6 +26,5 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         if (health != null)
             health.TakeDamage(damage);
-        
     }
 }

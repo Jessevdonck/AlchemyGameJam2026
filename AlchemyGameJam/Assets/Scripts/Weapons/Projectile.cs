@@ -1,4 +1,4 @@
-using System;
+using Interfaces;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -25,13 +25,13 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == owner) return;
-        
-        BaseEnemy enemy = other.GetComponent<BaseEnemy>();
+        if (other.transform.root == owner.transform.root) return;
 
-        if (enemy != null)
+        IDamageable target = other.GetComponentInParent<IDamageable>();
+
+        if (target != null)
         {
-            enemy.TakeDamage(damage);
+            target.TakeDamage(damage);
             Destroy(gameObject);
         }
     }
