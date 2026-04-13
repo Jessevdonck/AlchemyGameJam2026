@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52dcbb1b4e5547beb6633898ef956fa6, type: 3}
   m_Name: HealPotion
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.Inventory.HealPotion
-  potionName: 
+  potionName: Potion Of Minor Healing
   icon: {fileID: 0}
-  healAmount: 0
+  healAmount: 10
