@@ -12,23 +12,48 @@ public class InputReader : MonoBehaviour
     public event Action OnShoot;
     public event Action OnDash;
 
+    public event Action OnNextPotion;
+
+    public event Action OnUsePotion;
+
     private void Awake()
     {
         controls = new InputSystem_Actions();
-
-        controls.Player.Move.performed += ctx => MoveInput = ctx.ReadValue<Vector2>();
-        controls.Player.Move.canceled += ctx => MoveInput = Vector2.zero;
-
-        controls.Player.Attack.performed += ctx => OnShoot?.Invoke();
-        controls.Player.Dash.performed += ctx => OnDash?.Invoke();
-        
     }
 
     private void Update()
     {
         MousePosition = Mouse.current.position.ReadValue();
+        
     }
 
-    private void OnEnable() => controls.Enable();
-    private void OnDisable() => controls.Disable();
+    private void OnEnable()
+    {
+        controls.Enable();
+        
+        controls.Player.Move.performed += ctx => MoveInput = ctx.ReadValue<Vector2>();
+        controls.Player.Move.canceled += ctx => MoveInput = Vector2.zero;
+
+        controls.Player.Attack.performed += ctx => OnShoot?.Invoke();
+        controls.Player.Dash.performed += ctx => OnDash?.Invoke();
+
+        controls.Player.UsePotion.performed += ctx => OnUsePotion?.Invoke();
+
+        controls.Player.CyclePotion.performed += ctx => OnNextPotion?.Invoke();
+    }
+
+    private void OnDisable()
+    {
+        
+        controls.Disable(); 
+        controls.Player.Move.performed -= ctx => MoveInput = ctx.ReadValue<Vector2>();
+        controls.Player.Move.canceled -= ctx => MoveInput = Vector2.zero;
+
+        controls.Player.Attack.performed -= ctx => OnShoot?.Invoke();
+        controls.Player.Dash.performed -= ctx => OnDash?.Invoke();
+
+        controls.Player.UsePotion.performed -= ctx => OnUsePotion?.Invoke();
+
+        controls.Player.CyclePotion.performed -= ctx => OnNextPotion.Invoke();
+    }
 }

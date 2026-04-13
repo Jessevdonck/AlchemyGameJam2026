@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ScriptableObjects.Inventory
@@ -8,7 +9,7 @@ namespace ScriptableObjects.Inventory
         public int healAmount;
         public override void Use(GameObject user)
         {
-            throw new System.NotImplementedException();
+            Debug.Log("potion used");
         }
     }
 }
