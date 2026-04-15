@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown = 1f;
 
     private Rigidbody2D rb;
+    private Animator animator;
     private Camera cam;
     private InputReader input;
 
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         cam = Camera.main;
     }
 
@@ -38,6 +40,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Vector2 move = input.MoveInput;
+        float speedValue = move.magnitude;
+        
+        animator.SetFloat("Speed", speedValue, 0.1f, Time.deltaTime);
+        
         Aim();
     }
 
@@ -45,9 +52,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 worldPos = cam.ScreenToWorldPoint(input.MousePosition);
         Vector2 direction = worldPos - rb.position;
+        Vector2 aimDir = (worldPos - rb.position).normalized;
 
+        animator.SetFloat("AimX", aimDir.x);
+        animator.SetFloat("AimY", aimDir.y);
+        
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle - 90f;
     }
 
     void TryDash()

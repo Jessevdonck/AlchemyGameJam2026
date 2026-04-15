@@ -15,6 +15,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 
         if (health != null)
             health.OnDeath += Die;
+
     }
 
     protected virtual void Die()

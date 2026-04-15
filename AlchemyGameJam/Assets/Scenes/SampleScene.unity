@@ -1287,7 +1287,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.3164062
+  orthographic size: 3.1666667
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1409,6 +1409,7 @@ GameObject:
   - component: {fileID: 1977585231}
   - component: {fileID: 1977585234}
   - component: {fileID: 1977585235}
+  - component: {fileID: 1977585236}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1454,7 +1455,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6875, y: 0.71875}
+    oldSize: {x: 0.65625, y: 1.125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1538,7 +1539,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8892390494324392235, guid: 708a1df8459688547bed84528d7581fd, type: 3}
+  m_Sprite: {fileID: 9128384846270689552, guid: 79a0fd3387729534f9795405a4790fcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
