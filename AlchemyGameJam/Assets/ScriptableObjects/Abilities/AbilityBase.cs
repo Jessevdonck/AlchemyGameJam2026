@@ -1,3 +1,5 @@
+using GlobalManagers;
+using GlobalManagers.Timer;
 using UnityEngine;
 
 namespace ScriptableObjects.Abilities
@@ -9,16 +11,19 @@ namespace ScriptableObjects.Abilities
         public float cooldown;
         public Sprite icon;
 
-        private float _lastUsedTime = -Mathf.Infinity;
-
-        public bool IsOnCooldown => Time.time - _lastUsedTime < cooldown;
-        public float CooldownRemaining => Mathf.Max(0, cooldown - (Time.time - _lastUsedTime));
+        public Timer _cooldownTimer;
 
         public void TryUse(GameObject user)
         {
-            if (IsOnCooldown) return;
-            _lastUsedTime = Time.time;
+            if (_cooldownTimer is { IsDone: false }) return;
+                
             Use(user);
+            _cooldownTimer = TimerManager.Instance.Register(cooldown, () =>
+            {
+                _cooldownTimer = null;
+            });
+            
+            
         }
 
         protected abstract void Use(GameObject user);

@@ -44,7 +44,7 @@ namespace Player.AbilitySystem
 
         public AbilityBase GetAbility(int index)
         {
-            return _abilities.Count < index + 1 ? null : _abilities[index];
+            return _abilities[index] ? _abilities[index] : null;
         }
     }
 }

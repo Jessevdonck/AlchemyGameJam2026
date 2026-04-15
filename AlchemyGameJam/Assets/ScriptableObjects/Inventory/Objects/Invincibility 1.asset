@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957ea4a4f0114a068f86e069b9a2732a, type: 3}
   m_Name: Invincibility 1
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.Inventory.InvincibilityPotion
-  potionName: 
-  icon: {fileID: 0}
-  amount: 0
+  potionName: Invincibility 1
+  icon: {fileID: -2017764657304966050, guid: 18add58992c934be09c1a41cc01f1c5e, type: 3}

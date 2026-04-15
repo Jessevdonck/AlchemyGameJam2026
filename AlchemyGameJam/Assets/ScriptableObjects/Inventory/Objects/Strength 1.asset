@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ff8815be1241e4aa7e87553a407f56, type: 3}
   m_Name: Strength 1
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.Inventory.StrengthPotion
-  potionName: 
-  icon: {fileID: 0}
-  amount: 0
+  potionName: Strength 1
+  icon: {fileID: -7739326379398638255, guid: 18add58992c934be09c1a41cc01f1c5e, type: 3}
