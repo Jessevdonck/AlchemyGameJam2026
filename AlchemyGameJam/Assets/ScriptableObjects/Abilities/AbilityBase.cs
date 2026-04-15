@@ -14,7 +14,20 @@ namespace ScriptableObjects.Abilities
         
         public Timer CooldownTimer;
 
-        public float progressPercentage => CooldownTimer.Progress;
+        public float progressPercentage
+        {
+            get
+            {
+                if (CooldownTimer != null)
+                {
+                    return CooldownTimer.Progress;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         public void TryUse(GameObject user, Vector2 mousePos)
         {
