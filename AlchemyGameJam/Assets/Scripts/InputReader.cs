@@ -7,7 +7,7 @@ public class InputReader : MonoBehaviour
     private InputSystem_Actions controls;
 
     public Vector2 MoveInput { get; private set; }
-    public Vector2 MousePosition { get; private set; }
+    public Vector2 MousePosition => controls.Player.Mouse.ReadValue<Vector2>();
 
     public event Action OnShoot;
     public event Action OnDash;
@@ -47,7 +47,6 @@ public class InputReader : MonoBehaviour
 
     private void Update()
     {
-        MousePosition = Mouse.current.position.ReadValue();
     }
 
     private void OnEnable()

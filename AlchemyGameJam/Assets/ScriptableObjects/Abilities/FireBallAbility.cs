@@ -2,17 +2,25 @@ using UnityEngine;
 
 namespace ScriptableObjects.Abilities
 {
+    [CreateAssetMenu(menuName = "Game/Abilities/Fireball")]
     public class FireBallAbility : AbilityBase
     {
-        [SerializeField] GameObject _fireballPrefab;
-        [SerializeField] private InputReader input;
-        
-        protected override void Use(GameObject user)
-        {
-            Vector2 worldPos = Camera.main.ScreenToWorldPoint(input.MousePosition);
-            Vector2 dir = (worldPos - (Vector2)user.transform.position).normalized;
+        public GameObject fireballPrefab;
 
-            GameObject projectile = Instantiate(_fireballPrefab, user.transform.position, user.transform.rotation);
+        public int damage;
+        public int speed;
+        
+        protected override void Use(GameObject user, Vector2 mousePos)
+        {
+            Vector2 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+            Vector2 dir = (worldPos - (Vector2)user.transform.position).normalized;
+            
+            var fireball = Instantiate(fireballPrefab, user.transform.position, user.transform.rotation);
+            Projectile projectile = fireball.GetComponent<Projectile>();
+            if (projectile != null) projectile.damage = damage;
+            
+            Rigidbody2D rb = fireball.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity = dir * speed;
             
         }
     }

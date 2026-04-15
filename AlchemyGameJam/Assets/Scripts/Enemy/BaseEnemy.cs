@@ -25,6 +25,9 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     public virtual void TakeDamage(float damage)
     {
         if (health != null)
-            health.TakeDamage(damage);
+        {
+            health.TakeDamage(damage);  
+        }
+            
     }
 }

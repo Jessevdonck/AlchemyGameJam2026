@@ -1315,9 +1315,9 @@ GameObject:
   - component: {fileID: 1977585228}
   - component: {fileID: 1977585227}
   - component: {fileID: 1977585233}
-  - component: {fileID: 1977585232}
   - component: {fileID: 1977585231}
   - component: {fileID: 1977585234}
+  - component: {fileID: 1977585235}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1489,21 +1489,6 @@ MonoBehaviour:
   dashForce: 15
   dashTime: 0.2
   dashCooldown: 1
---- !u!114 &1977585232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977585225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a9d39e989714350a7de2e489c909b6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
-  projectilePrefab: {fileID: 3215094936124900209, guid: bba689ffc0b9a4f4aafa3f6ec0b7298c, type: 3}
-  firePoint: {fileID: 1744725822}
-  projectileSpeed: 10
 --- !u!114 &1977585233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1517,7 +1502,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   movement: {fileID: 1977585231}
-  shooting: {fileID: 1977585232}
 --- !u!114 &1977585234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1537,6 +1521,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2b070fa083f975b47bf6120b7bc036f4, type: 2}
   - {fileID: 11400000, guid: 6d0b764dfbf124b47a86251b0afb7047, type: 2}
   maxPotionSlots: 5
+--- !u!114 &1977585235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977585225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0a93dfcb274c6cb4e8315c088b657f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.AbilitySystem.AbilityManager
+  _abilities:
+  - {fileID: 11400000, guid: 7faa959b9784d5f4bab9599ebc338177, type: 2}
+  input: {fileID: 502234856}
 --- !u!1001 &5643022745628780937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1547,6 +1546,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3596013643701462284, guid: 6acfd712610398049b75f6683d76659e, type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916699590270258548, guid: 6acfd712610398049b75f6683d76659e, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5470430687187979308, guid: 6acfd712610398049b75f6683d76659e, type: 3}

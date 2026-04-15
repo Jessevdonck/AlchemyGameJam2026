@@ -47,6 +47,6 @@ public class RangedEnemy : EnemyAi
         Vector2 dir = (player.position - transform.position).normalized;
 
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        bullet.GetComponent<Projectile>().Init(dir, stats.damage, gameObject);
+        // bullet.GetComponent<Projectile>().Init(dir, stats.damage, gameObject);
     }
 }

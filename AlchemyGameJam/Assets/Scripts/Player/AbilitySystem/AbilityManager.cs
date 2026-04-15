@@ -18,7 +18,7 @@ namespace Player.AbilitySystem
         
         private void UseAbility(int index)
         {
-            GetAbility(index)?.TryUse(gameObject);
+            GetAbility(index)?.TryUse(gameObject, input.MousePosition);
         }
 
         private void Awake()

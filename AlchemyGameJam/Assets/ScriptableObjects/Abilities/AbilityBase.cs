@@ -2,6 +2,7 @@ using GlobalManagers;
 using GlobalManagers.Timer;
 using UnityEngine;
 
+
 namespace ScriptableObjects.Abilities
 {
     public abstract class AbilityBase : ScriptableObject
@@ -10,26 +11,24 @@ namespace ScriptableObjects.Abilities
         public string description;
         public float cooldown;
         public Sprite icon;
-
-        public Input input;
         
-        public Timer _cooldownTimer;
+        public Timer CooldownTimer;
 
-        public float progressPercentage => _cooldownTimer.Progress;
+        public float progressPercentage => CooldownTimer.Progress;
 
-        public void TryUse(GameObject user)
+        public void TryUse(GameObject user, Vector2 mousePos)
         {
-            if (_cooldownTimer is { IsDone: false }) return;
-                
-            Use(user);
-            _cooldownTimer = TimerManager.Instance.Register(cooldown, () =>
+            if (CooldownTimer is { IsDone: false }) return;
+
+            Use(user, mousePos);
+            CooldownTimer = TimerManager.Instance.Register(cooldown, () =>
             {
-                _cooldownTimer = null;
+                CooldownTimer = null;
             });
             
             
         }
 
-        protected abstract void Use(GameObject user);
+        protected abstract void Use(GameObject user, Vector2 mousePos);
     }
 }
