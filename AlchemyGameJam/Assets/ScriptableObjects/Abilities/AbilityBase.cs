@@ -11,7 +11,11 @@ namespace ScriptableObjects.Abilities
         public float cooldown;
         public Sprite icon;
 
+        public Input input;
+        
         public Timer _cooldownTimer;
+
+        public float progressPercentage => _cooldownTimer.Progress;
 
         public void TryUse(GameObject user)
         {
