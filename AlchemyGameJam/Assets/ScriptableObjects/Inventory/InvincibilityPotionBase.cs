@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ScriptableObjects.Inventory
 {
     [CreateAssetMenu(menuName = "Game/Potions/Invincibility Potion")]
-    public class InvincibilityPotion : APotion
+    public class InvincibilityPotionBase : PotionBase
     {
         public override void Use(GameObject user)
         {

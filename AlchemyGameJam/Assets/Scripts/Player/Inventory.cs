@@ -17,7 +17,7 @@ namespace Player
         
         private Dictionary<ResourceData, int> _resources = new();
 
-        public List<APotion> potions;
+        public List<PotionBase> potions;
         public int maxPotionSlots = 3;
 
         private int _selectedPotion = 0;
@@ -74,12 +74,12 @@ namespace Player
             return _resources.TryGetValue(resource, out var value) ? value : 0;
         }
 
-        public bool AddPotion(APotion potion)
+        public bool AddPotion(PotionBase potionBase)
         {
             if (potions.Count >= maxPotionSlots)
                 return false;
 
-            potions.Add(potion);
+            potions.Add(potionBase);
             
             return true;
         }

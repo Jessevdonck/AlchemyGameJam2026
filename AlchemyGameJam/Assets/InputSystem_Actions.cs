@@ -199,6 +199,51 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AbilityOne"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8bf3440-6e81-4db5-9877-d9234f5099ab"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AbilityTwo"",
+                    ""type"": ""Button"",
+                    ""id"": ""4bdb42e0-4de2-466c-a6e3-2dc487754197"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AbilityThree"",
+                    ""type"": ""Button"",
+                    ""id"": ""9dc8d620-aa18-4d3b-a255-1b4fa677563e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AbilityFour"",
+                    ""type"": ""Button"",
+                    ""id"": ""f0f66aa8-e84a-4f74-92f7-5e85acbaf45d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""ffea48d6-d856-4b73-89c3-2fc48c28e416"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -617,6 +662,61 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CyclePotion"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fadb7ae8-c05d-4911-8c59-8eaa43696d7a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AbilityOne"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d59dbb0-5075-41bd-a666-684eada25872"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AbilityTwo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""229faa6d-c0ca-4960-b919-e618a3b475d8"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Touch"",
+                    ""action"": ""AbilityThree"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""590e6526-acf5-46c1-a09e-4009ca37507b"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AbilityFour"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92b8ebb2-6f78-4f51-bd89-b5ee51911755"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1216,6 +1316,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_UsePotion = m_Player.FindAction("Use Potion", throwIfNotFound: true);
         m_Player_CyclePotion = m_Player.FindAction("CyclePotion", throwIfNotFound: true);
+        m_Player_AbilityOne = m_Player.FindAction("AbilityOne", throwIfNotFound: true);
+        m_Player_AbilityTwo = m_Player.FindAction("AbilityTwo", throwIfNotFound: true);
+        m_Player_AbilityThree = m_Player.FindAction("AbilityThree", throwIfNotFound: true);
+        m_Player_AbilityFour = m_Player.FindAction("AbilityFour", throwIfNotFound: true);
+        m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1321,6 +1426,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_UsePotion;
     private readonly InputAction m_Player_CyclePotion;
+    private readonly InputAction m_Player_AbilityOne;
+    private readonly InputAction m_Player_AbilityTwo;
+    private readonly InputAction m_Player_AbilityThree;
+    private readonly InputAction m_Player_AbilityFour;
+    private readonly InputAction m_Player_Mouse;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1380,6 +1490,26 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/CyclePotion".
         /// </summary>
         public InputAction @CyclePotion => m_Wrapper.m_Player_CyclePotion;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/AbilityOne".
+        /// </summary>
+        public InputAction @AbilityOne => m_Wrapper.m_Player_AbilityOne;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/AbilityTwo".
+        /// </summary>
+        public InputAction @AbilityTwo => m_Wrapper.m_Player_AbilityTwo;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/AbilityThree".
+        /// </summary>
+        public InputAction @AbilityThree => m_Wrapper.m_Player_AbilityThree;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/AbilityFour".
+        /// </summary>
+        public InputAction @AbilityFour => m_Wrapper.m_Player_AbilityFour;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Mouse".
+        /// </summary>
+        public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1442,6 +1572,21 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @CyclePotion.started += instance.OnCyclePotion;
             @CyclePotion.performed += instance.OnCyclePotion;
             @CyclePotion.canceled += instance.OnCyclePotion;
+            @AbilityOne.started += instance.OnAbilityOne;
+            @AbilityOne.performed += instance.OnAbilityOne;
+            @AbilityOne.canceled += instance.OnAbilityOne;
+            @AbilityTwo.started += instance.OnAbilityTwo;
+            @AbilityTwo.performed += instance.OnAbilityTwo;
+            @AbilityTwo.canceled += instance.OnAbilityTwo;
+            @AbilityThree.started += instance.OnAbilityThree;
+            @AbilityThree.performed += instance.OnAbilityThree;
+            @AbilityThree.canceled += instance.OnAbilityThree;
+            @AbilityFour.started += instance.OnAbilityFour;
+            @AbilityFour.performed += instance.OnAbilityFour;
+            @AbilityFour.canceled += instance.OnAbilityFour;
+            @Mouse.started += instance.OnMouse;
+            @Mouse.performed += instance.OnMouse;
+            @Mouse.canceled += instance.OnMouse;
         }
 
         /// <summary>
@@ -1489,6 +1634,21 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @CyclePotion.started -= instance.OnCyclePotion;
             @CyclePotion.performed -= instance.OnCyclePotion;
             @CyclePotion.canceled -= instance.OnCyclePotion;
+            @AbilityOne.started -= instance.OnAbilityOne;
+            @AbilityOne.performed -= instance.OnAbilityOne;
+            @AbilityOne.canceled -= instance.OnAbilityOne;
+            @AbilityTwo.started -= instance.OnAbilityTwo;
+            @AbilityTwo.performed -= instance.OnAbilityTwo;
+            @AbilityTwo.canceled -= instance.OnAbilityTwo;
+            @AbilityThree.started -= instance.OnAbilityThree;
+            @AbilityThree.performed -= instance.OnAbilityThree;
+            @AbilityThree.canceled -= instance.OnAbilityThree;
+            @AbilityFour.started -= instance.OnAbilityFour;
+            @AbilityFour.performed -= instance.OnAbilityFour;
+            @AbilityFour.canceled -= instance.OnAbilityFour;
+            @Mouse.started -= instance.OnMouse;
+            @Mouse.performed -= instance.OnMouse;
+            @Mouse.canceled -= instance.OnMouse;
         }
 
         /// <summary>
@@ -1873,6 +2033,41 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnCyclePotion(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AbilityOne" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbilityOne(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AbilityTwo" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbilityTwo(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AbilityThree" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbilityThree(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AbilityFour" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbilityFour(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Mouse" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMouse(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

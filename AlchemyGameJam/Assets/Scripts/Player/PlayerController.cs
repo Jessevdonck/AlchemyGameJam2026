@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement movement;
-    [SerializeField] private PlayerShooting shooting;
 
     private InputReader input;
 
@@ -12,6 +11,5 @@ public class PlayerController : MonoBehaviour
         input = FindAnyObjectByType<InputReader>();
 
         movement.Initialize(input);
-        shooting.Initialize(input);
     }
 }

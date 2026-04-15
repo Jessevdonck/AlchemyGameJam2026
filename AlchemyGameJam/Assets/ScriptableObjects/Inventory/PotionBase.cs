@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ScriptableObjects.Inventory
 {
-    public abstract class APotion : ScriptableObject
+    public abstract class PotionBase : ScriptableObject
     {
         public string potionName;
         public Sprite icon;

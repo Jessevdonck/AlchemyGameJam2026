@@ -11,24 +11,12 @@ namespace UI
     {
         [Header("UI References")]
         public Image itemIcon;
-        public TextMeshProUGUI itemNameText;   // swap for Text if not using TMP
-        public GameObject hudRoot; // the whole panel — assign SelectedItemHUD itself
+        public TextMeshProUGUI itemNameText;  
+        public GameObject hudRoot;
         
         [Header("Settings")]
-        public Sprite emptySlotSprite;         // optional: shown when nothing selected
+        public Sprite emptySlotSprite;
         public Color filledSlotColor = Color.white;
-
-
-        
-
-        private void Awake()
-        {
-        }
-
-        void Start()
-        {
-            
-        }
         
         public void UpdateDisplay(Sprite sprite, string itemName)
         {
