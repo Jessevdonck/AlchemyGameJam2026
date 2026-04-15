@@ -7,7 +7,13 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     [SerializeField] protected EnemyStats stats;
 
     protected Health health;
-    private RoundManager waveManager;
+    private IEnemyTracker tracker;
+
+    public void Init(IEnemyTracker enemyTracker)
+    {
+        tracker = enemyTracker;
+        tracker.RegisterEnemy();
+    }
 
     protected virtual void Awake()
     {
@@ -15,19 +21,19 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 
         if (health != null)
             health.OnDeath += Die;
-
-        waveManager = FindObjectOfType<RoundManager>();
     }
 
     protected virtual void Die()
     {
-        waveManager?.UnregisterEnemy();
+        tracker?.UnregisterEnemy();
         Destroy(gameObject);
     }
-
+    
     public virtual void TakeDamage(float damage)
     {
         if (health != null)
+        {
             health.TakeDamage(damage);
+        }
     }
 }
