@@ -1,4 +1,3 @@
-using System;
 using Interfaces;
 using UnityEngine;
 
@@ -8,6 +7,13 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     [SerializeField] protected EnemyStats stats;
 
     protected Health health;
+    private IEnemyTracker tracker;
+
+    public void Init(IEnemyTracker enemyTracker)
+    {
+        tracker = enemyTracker;
+        tracker.RegisterEnemy();
+    }
 
     protected virtual void Awake()
     {
@@ -20,6 +26,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 
     protected virtual void Die()
     {
+        tracker?.UnregisterEnemy();
         Destroy(gameObject);
     }
     
@@ -27,8 +34,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     {
         if (health != null)
         {
-            health.TakeDamage(damage);  
+            health.TakeDamage(damage);
         }
-            
     }
 }
