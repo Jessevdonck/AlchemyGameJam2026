@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a5128ac1501bf4bbbbe418d4b9dcdb27
+guid: e371bb538ad484bb7a4745e8b6cd6f6a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639116331306660730
+  platformSettingsDirtyTick: 639119508927030060
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,19 +127,19 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: candle
+  - name: InteractButton
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 7
-      height: 11
-    spriteID: afc7b87656d104c95bf2c5dac32573de
+      width: 16
+      height: 16
+    spriteID: a7471fe635c364f478f9f30e1d473177
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1491179453
+      value0: 2013639668
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: candle
+    name: InteractButton
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: candle
+    - name: InteractButton
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 1
-        y: 1
-        width: 7
-        height: 11
-      spriteId: afc7b87656d104c95bf2c5dac32573de
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      spriteId: a7471fe635c364f478f9f30e1d473177
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,7 +181,7 @@ ScriptedImporter:
   - name: DefaultTexturePlatform
     overridden: 0
     ignorePlatformSupport: 0
-    maxTextureSize: 32
+    maxTextureSize: 128
     resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
@@ -205,5 +205,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 9, y: 13}
-  previousTextureSize: {x: 16, y: 32}
+  canvasSize: {x: 16, y: 16}
+  previousTextureSize: {x: 32, y: 32}
