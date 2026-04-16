@@ -43,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
         Vector2 move = input.MoveInput;
         float speedValue = move.magnitude;
         
+        animator.SetFloat("MoveX", move.x);
+        animator.SetFloat("MoveY", move.y);
         animator.SetFloat("Speed", speedValue, 0.1f, Time.deltaTime);
         
         Aim();

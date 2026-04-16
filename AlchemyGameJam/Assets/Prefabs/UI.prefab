@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 6294720227706746846}
   - component: {fileID: 1365704812125574956}
   - component: {fileID: 9163260641655188221}
-  - component: {fileID: 2844044429590810787}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -220,21 +219,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2844044429590810787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756406390073339553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8986a0de9268156478406b89d354966d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthUI
-  playerHealth: {fileID: 0}
-  healthSlider: {fileID: 8392331625992341895}
-  healthText: {fileID: 3969226163292976874}
 --- !u!1 &1037197532659567720
 GameObject:
   m_ObjectHideFlags: 0
