@@ -17,7 +17,6 @@ public class Projectile : MonoBehaviour
 
         if (target != null)
         {
-            Debug.Log("woop");
             target.TakeDamage(damage);
             Destroy(gameObject);
         }

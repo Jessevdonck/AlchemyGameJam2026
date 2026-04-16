@@ -663,6 +663,17 @@ Transform:
   - {fileID: 190897350}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1328261790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3210687433359199836, guid: 022a7f36b549b7f4dbf57b75c288407d, type: 3}
+  m_PrefabInstance: {fileID: 1335381430}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89613ed9227d50f4db00a5cea654992c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
 --- !u!1001 &1335381430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -782,7 +793,7 @@ PrefabInstance:
     - target: {fileID: 3994285739351593559, guid: d67be540fd61e4402a2e43849b96715e, type: 3}
       propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1328261790}
     - target: {fileID: 7381392785153932160, guid: d67be540fd61e4402a2e43849b96715e, type: 3}
       propertyPath: abilities.Array.size
       value: 1
@@ -1222,6 +1233,63 @@ Transform:
   - {fileID: 1508464720}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5419549394163312639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 811814359414138606, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_Name
+      value: LootPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415596203991895786, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415596203991895786, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415596203991895786, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415596203991895786, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415596203991895786, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415596203991895786, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415596203991895786, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415596203991895786, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415596203991895786, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415596203991895786, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
 --- !u!1001 &5643022745628780937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1230,6 +1298,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 664666878418723434, guid: 6acfd712610398049b75f6683d76659e, type: 3}
+      propertyPath: lootTable
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ff6a28d4e5a6e54ea4dbfc395a35911, type: 2}
+    - target: {fileID: 664666878418723434, guid: 6acfd712610398049b75f6683d76659e, type: 3}
+      propertyPath: lootPickupPrefab
+      value: 
+      objectReference: {fileID: 811814359414138606, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
     - target: {fileID: 5470430687187979308, guid: 6acfd712610398049b75f6683d76659e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.94
@@ -1296,3 +1372,4 @@ SceneRoots:
   - {fileID: 1812532828}
   - {fileID: 1665729757}
   - {fileID: 1335381430}
+  - {fileID: 5419549394163312639}
