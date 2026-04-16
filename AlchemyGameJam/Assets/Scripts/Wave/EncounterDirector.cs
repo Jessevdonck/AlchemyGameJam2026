@@ -37,12 +37,10 @@ public class EncounterDirector : MonoBehaviour, IEnemyTracker
             encounterIndex++;
 
             float budget = baseBudget * Mathf.Pow(budgetGrowth, encounterIndex);
-
-            Debug.Log($"Encounter {encounterIndex}");
+            
 
             yield return StartCoroutine(RunEncounter(budget));
-
-            Debug.Log("Reward phase...");
+            
             yield return new WaitForSeconds(3f);
         }
     }
