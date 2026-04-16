@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ScriptableObjects.Abilities;
+using UI.Abilities;
 using UnityEngine;
 
 namespace Player.AbilitySystem
@@ -10,6 +11,8 @@ namespace Player.AbilitySystem
         [SerializeField] private List<AbilityBase> _abilities;
         
         [SerializeField] private InputReader input;
+
+        [SerializeField] private AbilitiesHUD hud;
         
         private Action _useAbilityOne;
         private Action _useAbilityTwo;
@@ -32,6 +35,11 @@ namespace Player.AbilitySystem
             input.OnUseAbilityTwo   += _useAbilityTwo;
             input.OnUseAbilityThree += _useAbilityThree;
             input.OnUseAbilityFour  += _useAbilityFour;
+        }
+
+        private void Update()
+        {
+            hud.abilities = _abilities;
         }
 
         private void OnDestroy()

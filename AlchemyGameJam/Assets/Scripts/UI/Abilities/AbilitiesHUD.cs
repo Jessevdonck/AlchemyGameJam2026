@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using GlobalManagers.Timer;
+using ScriptableObjects.Abilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,34 +10,38 @@ namespace UI.Abilities
     public class AbilitiesHUD : MonoBehaviour
     {
         [Header("UI References")] 
-        public GameObject hudRoot;
+        [SerializeField] private Image[] _abilityImages;
         
-        public Image abilityOne;
-        public Image abilityTwo;
-        public Image abilityThree;
-        public Image abilityFour;
-        [Header("Backgrounds")]
-        public Image abilityOneFill;
-        public Image abilityTwoFill;
-        public Image abilityThreeFill;
-        public Image abilityFourFill;
-        [Header("Cooldowns")]
-        public Image abilityOneCooldown;
-        public Image abilityTwoCooldown;
-        public Image abilityThreeCooldown;
-        public Image abilityFourCooldown;
-        
-        public void UpdateDisplay(Sprite sprite, string itemName)
-        {
-            if (sprite == null)
-            {
-                ClearSlot();
-                return;
-            }
+        [SerializeField] private Image[] _abilityCooldowns;
 
-            hudRoot.SetActive(true);
-            
+        public List<AbilityBase> abilities;
+        
+        private void Update()
+        {
+            UpdateAbilities();
         }
+
+        private void UpdateAbilities()
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                if (i < abilities.Count)
+                {
+                    var ab = abilities[i];
+                    _abilityImages[i].sprite = ab.icon;
+                    _abilityImages[i].color = Color.white;
+                    _abilityCooldowns[i].color = Color.white;
+                    _abilityCooldowns[i].rectTransform.transform.localScale = new Vector3(1, 1 - ab.progressPercentage, 1);
+                }
+                else
+                {
+                    _abilityImages[i].color = Color.clear;
+                    _abilityImages[i].sprite = null;
+                    _abilityCooldowns[i].color = Color.clear;
+                }
+            }
+        }
+        
 
         public void ClearSlot()
         {
