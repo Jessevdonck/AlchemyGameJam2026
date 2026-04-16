@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     { 
+        if (other.CompareTag("Player")) return;
         IDamageable target = other.GetComponentInParent<IDamageable>();
 
         if (target != null)
