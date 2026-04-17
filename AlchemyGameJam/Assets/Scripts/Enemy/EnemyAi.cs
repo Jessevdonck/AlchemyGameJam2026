@@ -10,11 +10,13 @@ public abstract class EnemyAi : BaseEnemy
     [SerializeField] protected LayerMask enemyLayer;
 
     protected float decisionTimer;
+    protected EnemyAnimation anim;
     protected float decisionInterval = 0.3f;
 
     protected virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        anim = GetComponent<EnemyAnimation>(); 
     }
 
     protected virtual void Update()
@@ -74,5 +76,7 @@ public abstract class EnemyAi : BaseEnemy
         Vector2 finalDir = (separation * 2f + direction).normalized;
 
         transform.position = myPos + finalDir * stats.moveSpeed * Time.deltaTime;
+        
+        anim.UpdateAnimation(finalDir);
     }
 }
