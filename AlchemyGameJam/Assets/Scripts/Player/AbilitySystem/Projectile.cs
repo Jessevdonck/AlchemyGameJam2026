@@ -47,10 +47,6 @@ public class Projectile : MonoBehaviour
             rb.linearVelocity = direction * speed;
 
         transform.right = direction;
-
-        // Start the looping flight animation
-        if (animator != null)
-            animator.SetTrigger(FlyTrigger);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

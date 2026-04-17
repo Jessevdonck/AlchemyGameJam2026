@@ -1,3 +1,4 @@
+using System.Collections;
 using Enemy;
 using Enum;
 using Interfaces;
@@ -10,7 +11,9 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     [SerializeField] private LootTable lootTable;
     [SerializeField] private GameObject lootPickupPrefab;
     [SerializeField] private int lootRolls = 1; //aantal drops
+    [SerializeField] private float deathAnimDuration = 0.6f;
 
+    private bool isDead = false;
     public Team team = Team.Enemy;
     
     protected Health health;
@@ -33,6 +36,31 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 
     protected virtual void Die()
     {
+        if (isDead) return; 
+
+        var col = GetComponent<Collider2D>();
+        if (col != null)
+            col.enabled = false;
+        isDead = true;
+
+        Debug.Log("DIE CALLED");
+
+        var ai = GetComponent<EnemyAi>();
+        if (ai != null)
+            ai.enabled = false;
+
+        var anim = GetComponent<EnemyAnimation>();
+        if (anim != null)
+            anim.PlayDeath();
+    }
+    
+    private void OnDestroy()
+    {
+        Debug.Log("ENEMY DESTROYED");
+    }
+    
+    public void OnDeathAnimationEnd()
+    {
         DropLoot();
         tracker?.UnregisterEnemy();
         Destroy(gameObject);
@@ -40,6 +68,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     
     public virtual void TakeDamage(float damage)
     {
+        if (isDead) return; 
+
         if (health != null)
         {
             health.TakeDamage(damage);

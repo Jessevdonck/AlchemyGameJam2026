@@ -189,6 +189,7 @@ MonoBehaviour:
   lootTable: {fileID: 11400000, guid: 5ff6a28d4e5a6e54ea4dbfc395a35911, type: 2}
   lootPickupPrefab: {fileID: 811814359414138606, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
   lootRolls: 1
+  deathAnimDuration: 5
   team: 1
   separationRadius: 4
   separationStrength: 2
