@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Flat Speed
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.RitualCard
   cardName: Unnamed Card
-  description: 
+  description: add 5 speed
   icon: {fileID: 0}
   rarity: 0
   cardType: 0
   flatMaxHP: 0
   flatAttack: 0
   flatDefense: 0
-  flatSpeed: 0
+  flatSpeed: 5
   flatDamageMulti: 0
   pctMaxHP: 0
   pctAttack: 0

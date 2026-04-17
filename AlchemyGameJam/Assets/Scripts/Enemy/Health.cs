@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
 
         OnHealthChanged?.Invoke(CurrentHealth);
-
+        Debug.Log(damage);
         if (CurrentHealth <= 0)
         {
             Die();

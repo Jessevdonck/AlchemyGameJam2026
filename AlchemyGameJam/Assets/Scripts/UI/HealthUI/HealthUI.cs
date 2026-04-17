@@ -1,10 +1,11 @@
+using Player;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class HealthUI : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private PlayerStats playerHealth;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TMP_Text healthText;
 
@@ -12,15 +13,15 @@ public class HealthUI : MonoBehaviour
     {
         playerHealth.OnHealthChanged += UpdateUI;
 
-        UpdateUI(playerHealth.CurrentHealth, playerHealth.MaxHealth);
+        UpdateUI();
     }
 
-    private void UpdateUI(float current, float max)
+    private void UpdateUI()
     {
-        healthSlider.maxValue = max;
-        healthSlider.value = current;
+        healthSlider.maxValue = playerHealth.MaxHP;
+        healthSlider.value = playerHealth.CurrentHP;
 
-        healthText.text = $"{current} / {max}";
+        healthText.text = $"{playerHealth.CurrentHP} / {playerHealth.MaxHP}";
     }
 
     private void OnDestroy()

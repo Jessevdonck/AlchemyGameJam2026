@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929750ce7c6849f8a0194d72085f04af, type: 3}
   m_Name: Flat Max HP buff 6
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.RitualCard
-  cardName: Unnamed Card
-  description: 
+  cardName: flat max hp
+  description: add 10 to maxhp
   icon: {fileID: 0}
   rarity: 0
   cardType: 0
-  flatMaxHP: 0
+  flatMaxHP: 10
   flatAttack: 0
   flatDefense: 0
   flatSpeed: 0

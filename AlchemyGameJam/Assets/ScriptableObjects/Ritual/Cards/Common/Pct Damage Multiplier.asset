@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929750ce7c6849f8a0194d72085f04af, type: 3}
   m_Name: Pct Damage Multiplier
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.RitualCard
-  cardName: Unnamed Card
-  description: 
+  cardName: pct damage multiplier
+  description: 5% damage multiplier
   icon: {fileID: 0}
   rarity: 0
   cardType: 0
@@ -26,6 +26,6 @@ MonoBehaviour:
   pctAttack: 0
   pctDefense: 0
   pctSpeed: 0
-  pctDamageMulti: 0
+  pctDamageMulti: 0.05
   ability: {fileID: 0}
   passivePrefab: {fileID: 0}

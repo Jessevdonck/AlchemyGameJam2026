@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
 using Interfaces;
 
@@ -77,7 +78,8 @@ public class EncounterDirector : MonoBehaviour, IEnemyTracker
             yield return null;
         }
 
-        Debug.Log("Encounter Cleared!");
+        RitualSystem.Instance.TriggerRitual();
+
     }
 
     IEnumerator SpawnBurst(float pressure)

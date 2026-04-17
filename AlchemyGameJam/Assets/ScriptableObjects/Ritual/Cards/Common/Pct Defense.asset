@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929750ce7c6849f8a0194d72085f04af, type: 3}
   m_Name: Pct Defense
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.RitualCard
-  cardName: Unnamed Card
-  description: 
+  cardName: 'cpt defense '
+  description: add 5% to ur defense
   icon: {fileID: 0}
   rarity: 0
   cardType: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   flatDamageMulti: 0
   pctMaxHP: 0
   pctAttack: 0
-  pctDefense: 0
+  pctDefense: 0.05
   pctSpeed: 0
   pctDamageMulti: 0
   ability: {fileID: 0}

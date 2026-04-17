@@ -196,7 +196,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
-  bulletPrefab: {fileID: 3215094936124900209, guid: bba689ffc0b9a4f4aafa3f6ec0b7298c, type: 3}
+  bulletPrefab: {fileID: 3215094936124900209, guid: 75b0594a70c22624390c0b7b299862ad, type: 3}
 --- !u!114 &558142764940420045
 MonoBehaviour:
   m_ObjectHideFlags: 0

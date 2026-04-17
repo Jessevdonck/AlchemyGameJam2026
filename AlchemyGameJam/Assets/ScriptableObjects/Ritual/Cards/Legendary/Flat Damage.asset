@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929750ce7c6849f8a0194d72085f04af, type: 3}
   m_Name: Flat Damage
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.RitualCard
-  cardName: Unnamed Card
-  description: 
+  cardName: legendary damage card
+  description: add 20 to ur damage
   icon: {fileID: 0}
-  rarity: 0
+  rarity: 4
   cardType: 0
   flatMaxHP: 0
-  flatAttack: 0
+  flatAttack: 20
   flatDefense: 0
   flatSpeed: 0
   flatDamageMulti: 0

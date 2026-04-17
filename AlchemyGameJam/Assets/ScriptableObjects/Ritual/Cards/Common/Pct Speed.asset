@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929750ce7c6849f8a0194d72085f04af, type: 3}
   m_Name: Pct Speed
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.RitualCard
-  cardName: Unnamed Card
-  description: 
+  cardName: speed buff pct
+  description: 2% speed buff
   icon: {fileID: 0}
   rarity: 0
   cardType: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   pctMaxHP: 0
   pctAttack: 0
   pctDefense: 0
-  pctSpeed: 0
+  pctSpeed: 0.02
   pctDamageMulti: 0
   ability: {fileID: 0}
   passivePrefab: {fileID: 0}

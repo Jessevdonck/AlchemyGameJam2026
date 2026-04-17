@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 namespace Enemy
@@ -20,7 +21,7 @@ namespace Enemy
 
             if (timer > 0f) return;
 
-            PlayerHealth player = other.GetComponent<PlayerHealth>();
+            PlayerStats player = other.GetComponent<PlayerStats>();
 
             if (player != null)
             {

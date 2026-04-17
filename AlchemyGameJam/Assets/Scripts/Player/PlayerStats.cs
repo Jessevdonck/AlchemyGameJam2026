@@ -1,10 +1,12 @@
+using System;
 using Gameplay;
+using Interfaces;
 
 namespace Player
 {
     using UnityEngine;
 
-    public class PlayerStats : MonoBehaviour
+    public class PlayerStats : MonoBehaviour, IDamageable
     {
         [Header("Base Stats")] public float baseMaxHP = 100f;
         public float baseAttack = 10f;
@@ -12,9 +14,7 @@ namespace Player
         public float baseSpeed = 5f;
         public float baseDamageMulti = 1f; // e.g. 1.0 = 100% damage
         public float baseCooldownHaste = 1f;
-
-        public Health playerHealth;
-
+        
         // ── Computed (read-only outside this class) ──────────────────────────────
         public float MaxHP { get; private set; }
         public float CurrentHP { get; private set; }
@@ -28,11 +28,14 @@ namespace Player
         private float _flatHP, _flatAtk, _flatDef, _flatSpd, _flatDmgMul;
         private float _pctHP, _pctAtk, _pctDef, _pctSpd, _pctDmgMul, _pctCDHaste;
 
+        public Action OnHealthChanged;
+        
         void Awake()
         {
             RecalculateStats();
             CurrentHP = MaxHP;
             
+            OnHealthChanged?.Invoke();
                 
         }
 
@@ -64,7 +67,7 @@ namespace Player
 
             float oldMax = MaxHP;
             RecalculateStats();
-
+            OnHealthChanged?.Invoke();
             // Heal the difference if max HP increased
             float hpGain = MaxHP - oldMax;
             if (hpGain > 0) CurrentHP = Mathf.Min(CurrentHP + hpGain, MaxHP);
@@ -72,20 +75,32 @@ namespace Player
 
         public float CalculateDamage(float rawDamage)
         {
-            return rawDamage * DamageMulti;
+            return (rawDamage + _flatAtk) * DamageMulti;
         }
-    
-
+        
 
     /// <summary>Returns actual damage dealt after defense reduction.</summary>
     public void TakeDamage(float rawDamage)
     {
         float reduced = Mathf.Max(1f, rawDamage * (1f - Defense));
-        playerHealth.TakeDamage(reduced);
+        CurrentHP = Mathf.Clamp(CurrentHP - reduced, 0, MaxHP);
+        OnHealthChanged?.Invoke();
+        if (CurrentHP == 0)
+        {
+            Die();
+        }
     }
 
-    public void Heal(float amount) =>
-        CurrentHP = Mathf.Min(CurrentHP + amount, MaxHP);
+    public void Heal(float amount)
+    {
+        CurrentHP = Mathf.Clamp(CurrentHP, 0, MaxHP);
+        OnHealthChanged?.Invoke();
+    }
+    
+    private void Die()
+    {
+        Debug.Log("Player Died");
+    }
 
     public bool IsAlive => CurrentHP > 0f;
 }

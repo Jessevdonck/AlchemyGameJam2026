@@ -93,13 +93,13 @@ public class BrewingStation : Interactable
         }
     }
 
-    protected override void ShowOutline()
+    protected void ShowOutline()
     {
         var player = GameObject.FindGameObjectWithTag("Player");
         _playerInventory = player.GetComponent<Inventory>();
     }
 
-    protected override void HideOutline()
+    protected void HideOutline()
     {
         _playerInventory = null;
     }

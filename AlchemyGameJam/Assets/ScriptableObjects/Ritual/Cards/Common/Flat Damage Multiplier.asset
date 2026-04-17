@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929750ce7c6849f8a0194d72085f04af, type: 3}
   m_Name: Flat Damage Multiplier
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.RitualCard
-  cardName: Unnamed Card
-  description: 
+  cardName: flat damage multiplier
+  description: add 5% damage
   icon: {fileID: 0}
   rarity: 0
   cardType: 0
@@ -21,7 +21,7 @@ MonoBehaviour:
   flatAttack: 0
   flatDefense: 0
   flatSpeed: 0
-  flatDamageMulti: 0
+  flatDamageMulti: 0.05
   pctMaxHP: 0
   pctAttack: 0
   pctDefense: 0
