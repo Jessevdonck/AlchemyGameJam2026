@@ -13,6 +13,7 @@ public class InputReader : MonoBehaviour
     public event Action OnDash;
     public event Action OnNextPotion;
     public event Action OnUsePotion;
+    public event Action OnInteract; 
     public event Action OnUseAbilityOne;
     public event Action OnUseAbilityTwo;
     public event Action OnUseAbilityThree;
@@ -24,6 +25,7 @@ public class InputReader : MonoBehaviour
     private Action<InputAction.CallbackContext> _onDash;
     private Action<InputAction.CallbackContext> _onUsePotion;
     private Action<InputAction.CallbackContext> _onCyclePotion;
+    private Action<InputAction.CallbackContext> _onInteract; 
     private Action<InputAction.CallbackContext> _onAbilityOne;
     private Action<InputAction.CallbackContext> _onAbilityTwo;
     private Action<InputAction.CallbackContext> _onAbilityThree;
@@ -39,14 +41,11 @@ public class InputReader : MonoBehaviour
         _onDash          = ctx => OnDash?.Invoke();
         _onUsePotion     = ctx => OnUsePotion?.Invoke();
         _onCyclePotion   = ctx => OnNextPotion?.Invoke();
+        _onInteract      = ctx => OnInteract?.Invoke(); 
         _onAbilityOne    = ctx => OnUseAbilityOne?.Invoke();
         _onAbilityTwo    = ctx => OnUseAbilityTwo?.Invoke();
         _onAbilityThree  = ctx => OnUseAbilityThree?.Invoke();
         _onAbilityFour   = ctx => OnUseAbilityFour?.Invoke();
-    }
-
-    private void Update()
-    {
     }
 
     private void OnEnable()
@@ -59,6 +58,11 @@ public class InputReader : MonoBehaviour
         controls.Player.Dash.performed        += _onDash;
         controls.Player.UsePotion.performed   += _onUsePotion;
         controls.Player.CyclePotion.performed += _onCyclePotion;
+        controls.Player.Interact.performed    += _onInteract = ctx =>
+        {
+            Debug.Log("INTERACT PRESSED");
+            OnInteract?.Invoke();
+        };
         controls.Player.AbilityOne.performed  += _onAbilityOne;
         controls.Player.AbilityTwo.performed  += _onAbilityTwo;
         controls.Player.AbilityThree.performed += _onAbilityThree;
@@ -73,6 +77,7 @@ public class InputReader : MonoBehaviour
         controls.Player.Dash.performed        -= _onDash;
         controls.Player.UsePotion.performed   -= _onUsePotion;
         controls.Player.CyclePotion.performed -= _onCyclePotion;
+        controls.Player.Interact.performed    -= _onInteract;
         controls.Player.AbilityOne.performed  -= _onAbilityOne;
         controls.Player.AbilityTwo.performed  -= _onAbilityTwo;
         controls.Player.AbilityThree.performed -= _onAbilityThree;

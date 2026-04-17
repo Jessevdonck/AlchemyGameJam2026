@@ -37,6 +37,7 @@ namespace UI
         {
             itemIcon.sprite = emptySlotSprite;
             itemNameText.text = "";
+            hudRoot.SetActive(false);
         }
     }
 }

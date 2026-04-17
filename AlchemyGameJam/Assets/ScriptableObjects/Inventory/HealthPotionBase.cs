@@ -1,15 +1,24 @@
-using System;
+using ScriptableObjects.Inventory;
 using UnityEngine;
 
-namespace ScriptableObjects.Inventory
+[CreateAssetMenu(menuName = "Potions/Potion")]
+public class PotionBase : ScriptableObject
 {
-    [CreateAssetMenu(menuName = "Game/Potions/Heal Potion")]
-    public class HealthPotionBase : PotionBase
+    public string potionName;
+    public Sprite icon;
+
+    [Header("Cost")]
+    public ResourceData sulfurCost;
+    public int sulfurAmount = 1;
+
+    [Header("Effect")]
+    public PassiveEffectBase passivePrefab;
+
+    public void Use(GameObject target)
     {
-        public int healAmount;
-        public override void Use(GameObject user)
-        {
-            Debug.Log("potion used");
-        }
+        if (passivePrefab == null) return;
+
+        var instance = Instantiate(passivePrefab, target.transform);
+        instance.OnActivate();
     }
 }

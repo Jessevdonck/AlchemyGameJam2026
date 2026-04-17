@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
 using ScriptableObjects.Inventory;
 using UI;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -12,12 +9,10 @@ namespace Player
     {
         [SerializeField] private SelectedItemHUD hud;
         [SerializeField] private InputReader input;
-        
-        // private Health _health;
-        
+
         private Dictionary<ResourceData, int> _resources = new();
 
-        public List<PotionBase> potions;
+        public List<PotionBase> potions = new();
         public int maxPotionSlots = 3;
 
         private int _selectedPotion = 0;
@@ -26,20 +21,17 @@ namespace Player
         {
             input.OnUsePotion += UsePotion;
             input.OnNextPotion += NextPotion;
-            // _health = GetComponent<Health>();
             UpdateUi();
         }
 
         public void NextPotion()
         {
-            if (potions.Count == 0)
-            {
-                _selectedPotion = 0;
-                return;
-            }
-            _selectedPotion = (_selectedPotion + 1 + potions.Count) % potions.Count;
+            if (potions.Count <= 1) return; 
+
+            _selectedPotion = (_selectedPotion + 1) % potions.Count;
             UpdateUi();
         }
+
         public void PreviousPotion()
         {
             if (potions.Count == 0)
@@ -47,6 +39,7 @@ namespace Player
                 _selectedPotion = 0;
                 return;
             }
+
             _selectedPotion = (_selectedPotion - 1 + potions.Count) % potions.Count;
             UpdateUi();
         }
@@ -55,18 +48,30 @@ namespace Player
         {
             if (potions.Count == 0)
             {
+                _selectedPotion = 0;
                 hud.ClearSlot();
                 return;
             }
-            hud.UpdateDisplay(potions[_selectedPotion].icon, potions[_selectedPotion].potionName);
+
+            _selectedPotion = Mathf.Clamp(_selectedPotion, 0, potions.Count - 1);
+
+            var potion = potions[_selectedPotion];
+
+            if (potion == null)
+            {
+                Debug.LogWarning("Null potion found, removing...");
+                potions.RemoveAt(_selectedPotion);
+                UpdateUi();
+                return;
+            }
+
+            hud.UpdateDisplay(potion.icon, potion.potionName);
         }
-        
+
         public void AddResource(ResourceData resource, int amount)
         {
             _resources.TryAdd(resource, 0);
-
             _resources[resource] += amount;
-            
         }
 
         public int GetResource(ResourceData resource)
@@ -74,26 +79,52 @@ namespace Player
             return _resources.TryGetValue(resource, out var value) ? value : 0;
         }
 
-        public bool AddPotion(PotionBase potionBase)
+        public bool TrySpendResource(ResourceData resource, int amount)
         {
-            if (potions.Count >= maxPotionSlots)
+            if (GetResource(resource) < amount)
                 return false;
 
-            potions.Add(potionBase);
-            
+            _resources[resource] -= amount;
             return true;
         }
-        
+
+        public bool AddPotion(PotionBase potionBase)
+        {
+            if (potionBase == null) return false;
+            if (potions.Count >= maxPotionSlots) return false;
+
+            potions.Add(potionBase);
+            UpdateUi();
+            return true;
+        }
+
         public void UsePotion()
         {
-            if(potions.Count == 0) return;
-            Debug.Log(_selectedPotion);
-            potions[_selectedPotion].Use(gameObject);
+            if (potions.Count == 0) return;
+
+            var potion = potions[_selectedPotion];
+
+            if (potion == null)
+            {
+                potions.RemoveAt(_selectedPotion);
+                UpdateUi();
+                return;
+            }
+
+            potion.Use(gameObject);
+
             potions.RemoveAt(_selectedPotion);
-            PreviousPotion();
-            Debug.Log(_selectedPotion);
+            
+            if (potions.Count == 0)
+            {
+                _selectedPotion = 0;
+            }
+            else if (_selectedPotion >= potions.Count)
+            {
+                _selectedPotion = potions.Count - 1;
+            }
+
             UpdateUi();
-            Debug.Log(_selectedPotion);
         }
     }
 }

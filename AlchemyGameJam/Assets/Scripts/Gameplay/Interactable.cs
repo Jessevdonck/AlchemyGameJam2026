@@ -4,13 +4,6 @@ public class Interactable : MonoBehaviour
 {
     [SerializeField] private Collider2D _collider;
 
-    
-
-    
-    private void Awake()
-    {
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
@@ -23,16 +16,15 @@ public class Interactable : MonoBehaviour
         HideOutline();
     }
 
-    private void ShowOutline()
+    protected virtual void ShowOutline()
     {
     }
 
-    private void HideOutline()  
+    protected virtual void HideOutline()  
     {
     }
 
     private void OnDestroy()
     {
-      
     }
 }

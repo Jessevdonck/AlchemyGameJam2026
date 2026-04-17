@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.Inventory.HealPotion
   potionName: Potion Of Minor Healing
   icon: {fileID: -2662533834268657823, guid: 18add58992c934be09c1a41cc01f1c5e, type: 3}
-  amount: 0
-  healAmount: 10
+  sulfurCost: {fileID: 11400000, guid: 17339afeedb458843b6d9e68e90a2b50, type: 2}
+  sulfurAmount: 1
+  passivePrefab: {fileID: 0}
