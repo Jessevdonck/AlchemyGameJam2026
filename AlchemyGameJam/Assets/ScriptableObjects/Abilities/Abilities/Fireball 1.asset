@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScriptableObjects.Abilities.FireBallAbility
   abilityName: Fireball
   description: fireball
-  cooldown: 1
+  cooldown: 0.1
   icon: {fileID: 7545031610038178884, guid: 98edf8389a5dd53419e2e8cbac8b7e69, type: 3}
   fireballPrefab: {fileID: 3215094936124900209, guid: bba689ffc0b9a4f4aafa3f6ec0b7298c, type: 3}
-  damage: 10
+  baseDamage: 10
   speed: 10

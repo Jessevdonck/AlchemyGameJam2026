@@ -11,6 +11,9 @@ namespace Player
         public float baseDefense = 5f;
         public float baseSpeed = 5f;
         public float baseDamageMulti = 1f; // e.g. 1.0 = 100% damage
+        public float baseCooldownHaste = 1f;
+
+        public Health playerHealth;
 
         // ── Computed (read-only outside this class) ──────────────────────────────
         public float MaxHP { get; private set; }
@@ -19,15 +22,18 @@ namespace Player
         public float Defense { get; private set; }
         public float Speed { get; private set; }
         public float DamageMulti { get; private set; }
+        public float CooldownHaste { get; private set; }
 
         // ── Accumulated buffs ─────────────────────────────────────────────────────
         private float _flatHP, _flatAtk, _flatDef, _flatSpd, _flatDmgMul;
-        private float _pctHP, _pctAtk, _pctDef, _pctSpd, _pctDmgMul;
+        private float _pctHP, _pctAtk, _pctDef, _pctSpd, _pctDmgMul, _pctCDHaste;
 
         void Awake()
         {
             RecalculateStats();
             CurrentHP = MaxHP;
+            
+                
         }
 
         public void RecalculateStats()
@@ -37,6 +43,7 @@ namespace Player
             Defense = (baseDefense + _flatDef) * (1f + _pctDef);
             Speed = (baseSpeed + _flatSpd) * (1f + _pctSpd);
             DamageMulti = (baseDamageMulti + _flatDmgMul) * (1f + _pctDmgMul);
+            CooldownHaste = baseCooldownHaste * (1f +_pctCDHaste);
         }
 
         public void ApplyBuff(RitualCard card)
@@ -71,11 +78,10 @@ namespace Player
 
 
     /// <summary>Returns actual damage dealt after defense reduction.</summary>
-    public float TakeDamage(float rawDamage)
+    public void TakeDamage(float rawDamage)
     {
-        float reduced = Mathf.Max(1f, rawDamage - Defense);
-        CurrentHP = Mathf.Max(0f, CurrentHP - reduced);
-        return reduced;
+        float reduced = Mathf.Max(1f, rawDamage * (1f - Defense));
+        playerHealth.TakeDamage(reduced);
     }
 
     public void Heal(float amount) =>

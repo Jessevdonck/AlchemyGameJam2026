@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 664666878418723434}
   - component: {fileID: 558142764940420045}
   - component: {fileID: 5600560674789601034}
+  - component: {fileID: -7068179385276631184}
   m_Layer: 3
   m_Name: EnemyRanged
   m_TagString: Untagged
@@ -219,6 +220,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeamHolder
   team: 1
+--- !u!114 &-7068179385276631184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661806698554891805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa5c40eee6ed344aa321f89ef247673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
+  pivotOffset: 0
 --- !u!1 &8339219185375944649
 GameObject:
   m_ObjectHideFlags: 0
