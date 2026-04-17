@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ScriptableObjects.Inventory;
 using UI;
@@ -16,6 +17,8 @@ namespace Player
         public int maxPotionSlots = 3;
 
         private int _selectedPotion = 0;
+        
+        public event Action<ResourceData, int> OnResourceChanged;
 
         private void Awake()
         {
@@ -72,6 +75,8 @@ namespace Player
         {
             _resources.TryAdd(resource, 0);
             _resources[resource] += amount;
+            
+            OnResourceChanged?.Invoke(resource, _resources[resource]); 
         }
 
         public int GetResource(ResourceData resource)
@@ -85,6 +90,9 @@ namespace Player
                 return false;
 
             _resources[resource] -= amount;
+            
+            OnResourceChanged?.Invoke(resource, _resources[resource]);
+            
             return true;
         }
 

@@ -28,4 +28,9 @@ public class EnemySpawner : MonoBehaviour
             Debug.LogWarning("Prefab has no BaseEnemy!");
         }
     }
+    
+    public Transform[] GetSpawnPoints()
+    {
+        return spawnPoints;
+    }
 }

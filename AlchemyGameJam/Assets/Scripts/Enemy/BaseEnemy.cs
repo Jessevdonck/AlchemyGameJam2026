@@ -15,7 +15,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
 
     private bool isDead = false;
     public Team team = Team.Enemy;
-    
+
+    public float spawnTime;
     protected Health health;
     private IEnemyTracker tracker;
 
@@ -23,6 +24,7 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     {
         tracker = enemyTracker;
         tracker.RegisterEnemy();
+        spawnTime = Time.time;
     }
 
     protected virtual void Awake()
@@ -92,5 +94,10 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
             LootPickup pickup = obj.GetComponent<LootPickup>(); 
             pickup.Setup(drop.resource, drop.potion, amount);
         }
+    }
+    
+    public EnemyStats GetStats()
+    {
+        return stats;
     }
 }

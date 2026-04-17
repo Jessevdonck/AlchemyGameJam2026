@@ -1,14 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
 
-    [Header("Dash")] public float dashForce = 15f;
+    [Header("Dash")]
+    public float dashForce = 15f;
     public float dashTime = 0.2f;
     public float dashCooldown = 1f;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip dashClip;
+    [SerializeField] private AudioSource audioSource;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -31,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         cam = Camera.main;
         col = GetComponent<Collider2D>();
+
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -57,12 +64,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 worldPos = cam.ScreenToWorldPoint(input.MousePosition);
         Vector2 direction = worldPos - rb.position;
-        Vector2 aimDir = (worldPos - rb.position).normalized;
+        Vector2 aimDir = direction.normalized;
 
         animator.SetFloat("AimX", aimDir.x);
         animator.SetFloat("AimY", aimDir.y);
-
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
 
     void TryDash()
@@ -80,6 +85,12 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 dashDir = input.MoveInput.normalized;
 
+        if (dashClip != null && audioSource != null)
+        {
+            audioSource.pitch = 1f + Random.Range(-0.1f, 0.1f); 
+            audioSource.PlayOneShot(dashClip, 0.1f);
+        }
+
         col.enabled = false;
 
         rb.linearVelocity = dashDir * dashForce;
@@ -87,10 +98,19 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashTime);
 
         col.enabled = true;
-
         isDashing = false;
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+
+    public Vector2 GetMoveInput()
+    {
+        return input != null ? input.MoveInput : Vector2.zero;
+    }
+
+    public bool IsDashing()
+    {
+        return isDashing;
     }
 }

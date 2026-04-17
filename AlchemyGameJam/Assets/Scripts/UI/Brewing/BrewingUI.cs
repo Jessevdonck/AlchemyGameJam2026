@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Player;
+using ScriptableObjects.Inventory;
 
 public class BrewingUI : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class BrewingUI : MonoBehaviour
             var btn = Instantiate(buttonPrefab, buttonParent);
 
             var text = btn.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-            text.text = $"{potion.potionName} ({potion.sulfurAmount})";
+            text.text = $"{potion.potionName} ({potion.costAmount})";
 
             btn.onClick.AddListener(() => TryBrew(potion));
         }
@@ -60,7 +61,7 @@ public class BrewingUI : MonoBehaviour
 
     private void TryBrew(PotionBase potion)
     {
-        if (!_inventory.TrySpendResource(potion.sulfurCost, potion.sulfurAmount))
+        if (!_inventory.TrySpendResource(potion.costResource, potion.costAmount))
         {
             Debug.Log("Not enough sulfur");
             return;

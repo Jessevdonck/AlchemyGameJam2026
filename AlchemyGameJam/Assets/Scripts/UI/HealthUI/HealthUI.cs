@@ -13,15 +13,16 @@ public class HealthUI : MonoBehaviour
     {
         playerHealth.OnHealthChanged += UpdateUI;
 
-        UpdateUI();
+        UpdateUI(playerHealth.CurrentHP);
     }
 
-    private void UpdateUI()
+    private void UpdateUI(float currentHp)
     {
+        Debug.Log("UI UPDATE: " + currentHp);
         healthSlider.maxValue = playerHealth.MaxHP;
-        healthSlider.value = playerHealth.CurrentHP;
+        healthSlider.value = currentHp;
 
-        healthText.text = $"{playerHealth.CurrentHP} / {playerHealth.MaxHP}";
+        healthText.text = $"{currentHp} / {playerHealth.MaxHP}";
     }
 
     private void OnDestroy()

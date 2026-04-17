@@ -28,14 +28,14 @@ namespace Player
         private float _flatHP, _flatAtk, _flatDef, _flatSpd, _flatDmgMul;
         private float _pctHP, _pctAtk, _pctDef, _pctSpd, _pctDmgMul, _pctCDHaste;
 
-        public Action OnHealthChanged;
+        public event Action<float> OnHealthChanged;
         
         void Awake()
         {
             RecalculateStats();
             CurrentHP = MaxHP;
             
-            OnHealthChanged?.Invoke();
+            OnHealthChanged?.Invoke(CurrentHP);
                 
         }
 
@@ -67,10 +67,11 @@ namespace Player
 
             float oldMax = MaxHP;
             RecalculateStats();
-            OnHealthChanged?.Invoke();
+            
             // Heal the difference if max HP increased
             float hpGain = MaxHP - oldMax;
             if (hpGain > 0) CurrentHP = Mathf.Min(CurrentHP + hpGain, MaxHP);
+            OnHealthChanged?.Invoke(CurrentHP);
         }
 
         public float CalculateDamage(float rawDamage)
@@ -82,9 +83,9 @@ namespace Player
     /// <summary>Returns actual damage dealt after defense reduction.</summary>
     public void TakeDamage(float rawDamage)
     {
-        float reduced = Mathf.Max(1f, rawDamage * (1f - Defense));
+        float reduced = Mathf.Max(1f, rawDamage - Defense);
         CurrentHP = Mathf.Clamp(CurrentHP - reduced, 0, MaxHP);
-        OnHealthChanged?.Invoke();
+        OnHealthChanged?.Invoke(CurrentHP);
         if (CurrentHP == 0)
         {
             Die();
@@ -93,8 +94,13 @@ namespace Player
 
     public void Heal(float amount)
     {
-        CurrentHP = Mathf.Clamp(CurrentHP, 0, MaxHP);
-        OnHealthChanged?.Invoke();
+        float oldHP = CurrentHP;
+
+        CurrentHP = Mathf.Clamp(CurrentHP + amount, 0, MaxHP);
+
+        Debug.Log($"HEAL: {oldHP} → {CurrentHP}");
+
+        OnHealthChanged?.Invoke(CurrentHP);
     }
     
     private void Die()

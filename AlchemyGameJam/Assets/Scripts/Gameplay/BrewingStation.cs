@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Player;
+using ScriptableObjects.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 

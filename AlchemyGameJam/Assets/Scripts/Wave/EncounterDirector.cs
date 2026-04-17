@@ -19,6 +19,21 @@ public class EncounterDirector : MonoBehaviour, IEnemyTracker
     [Header("Pressure")]
     [SerializeField] private int maxAliveEnemies = 12;
     [SerializeField] private float baseSpawnInterval = 0.5f;
+
+    [Header("Pacing")] [SerializeField] private float encounterStartDelay = 7f;
+    
+    [Header("Player")]
+    [SerializeField] private Transform player;
+
+    [Header("Despawn")]
+    [SerializeField] private float maxDistanceFromPlayer = 25f;
+    
+    [Header("Respawn")]
+    [SerializeField] private float respawnCooldown = 1f;
+
+    private float lastRespawnTime;
+    private float checkInterval = 1f;
+    private float lastCheckTime;
     
     [SerializeField] private AnimationCurve pressureCurve; 
 
@@ -30,6 +45,89 @@ public class EncounterDirector : MonoBehaviour, IEnemyTracker
     {
         StartCoroutine(RunGame());
     }
+
+    private void Update()
+    {
+        if (Time.time >= lastCheckTime + checkInterval)
+        {
+            CheckEnemyDistances();
+            lastCheckTime = Time.time;
+        }
+    }
+    
+    void CheckEnemyDistances()
+    {
+        if (player == null) return;
+
+        var enemiesInScene = FindObjectsOfType<BaseEnemy>();
+
+        foreach (var enemy in enemiesInScene)
+        {
+            if (enemy == null) continue;
+
+            float dist = Vector2.Distance(enemy.transform.position, player.position);
+
+            if (Time.time - enemy.spawnTime < 2f)
+                continue;
+
+            if (aliveEnemies >= maxAliveEnemies)
+                continue;
+
+            if (dist > maxDistanceFromPlayer)
+            {
+                if (Time.time >= lastRespawnTime + respawnCooldown)
+                {
+                    RespawnEnemy(enemy);
+                    lastRespawnTime = Time.time;
+                }
+            }
+        }
+    }
+
+    void RespawnEnemy(BaseEnemy enemy)
+    {
+        EnemyStats stats = enemy.GetStats(); 
+
+        if (stats == null)
+        {
+            Destroy(enemy.gameObject);
+            return;
+        }
+
+        UnregisterEnemy();
+
+        Destroy(enemy.gameObject);
+        
+        Transform closest = GetClosestSpawnPoint();
+
+        GameObject newEnemy = Instantiate(stats.prefab, closest.position, Quaternion.identity);
+
+        BaseEnemy newBase = newEnemy.GetComponent<BaseEnemy>();
+        if (newBase != null)
+        {
+            newBase.Init(this);
+        }
+    }
+    
+    Transform GetClosestSpawnPoint()
+    {
+        Transform best = null;
+        float bestDist = float.MaxValue;
+
+        foreach (var point in spawner.GetSpawnPoints())
+        {
+            float dist = Vector2.Distance(point.position, player.position);
+
+            if (dist < bestDist)
+            {
+                bestDist = dist;
+                best = point;
+            }
+        }
+
+        return best;
+    }
+    
 
     IEnumerator RunGame()
     {
@@ -51,8 +149,12 @@ public class EncounterDirector : MonoBehaviour, IEnemyTracker
         remainingBudget = budget;
 
         float encounterDuration = baseEncounterDuration * Mathf.Pow(durationGrowth, encounterIndex);
-        float startTime = Time.time;
         
+
+        yield return new WaitForSeconds(encounterStartDelay);
+        
+        float startTime = Time.time;
+
         while (remainingBudget > 0 && (Time.time - startTime) < encounterDuration)
         {
             if (CanSpawn())
@@ -72,14 +174,13 @@ public class EncounterDirector : MonoBehaviour, IEnemyTracker
 
             yield return new WaitForSeconds(0.25f);
         }
-        
+
         while (aliveEnemies > 0)
         {
             yield return null;
         }
 
         RitualSystem.Instance.TriggerRitual();
-
     }
 
     IEnumerator SpawnBurst(float pressure)
