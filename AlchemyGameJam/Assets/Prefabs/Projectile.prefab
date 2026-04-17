@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4238338558643764751}
   - component: {fileID: 1353710609247775754}
   - component: {fileID: -2341106314331482376}
+  - component: {fileID: 8721235759592984390}
+  - component: {fileID: 7621637351179102086}
   m_Layer: 7
   m_Name: Projectile
   m_TagString: Untagged
@@ -142,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9078b65c034048afcf9ccd76a1dc78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
+  hitAnimDuration: 0.4
 --- !u!50 &-2341106314331482376
 Rigidbody2D:
   serializedVersion: 5
@@ -169,3 +172,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &8721235759592984390
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3215094936124900209}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 685a2024317b0d649993dd5ac5bf01bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7621637351179102086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3215094936124900209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49fb6ef563844308ba3e4e193e80911f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileAnimation

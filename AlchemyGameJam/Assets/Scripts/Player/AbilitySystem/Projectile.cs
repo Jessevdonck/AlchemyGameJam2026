@@ -23,11 +23,14 @@ public class Projectile : MonoBehaviour
     private static readonly int FlyTrigger = Animator.StringToHash("Fly");
     private static readonly int HitTrigger = Animator.StringToHash("Hit");
 
+    private ProjectileAnimation animHandler;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        col       = GetComponent<Collider2D>();
-        rb        = GetComponent<Rigidbody2D>();
+        animHandler = GetComponent<ProjectileAnimation>();
+        col = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
 
         Destroy(gameObject, 5f);
     }
@@ -79,7 +82,7 @@ public class Projectile : MonoBehaviour
 
         // Play the hit animation
         if (animator != null)
-            animator.SetTrigger(HitTrigger);
+            animHandler.PlayHit();
 
         yield return new WaitForSeconds(hitAnimDuration);
         Destroy(gameObject);
