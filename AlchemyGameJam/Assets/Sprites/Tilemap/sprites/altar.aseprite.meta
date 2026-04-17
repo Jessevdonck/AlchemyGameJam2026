@@ -33,7 +33,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 1
+    spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 16
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639119790789337977
+  platformSettingsDirtyTick: 639120195441009455
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -129,16 +129,16 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: altar
     originalName: 
-    pivot: {x: 0.5, y: -0.8333334}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 3
+      x: 4
       y: 4
-      width: 30
-      height: 13
+      width: 28
+      height: 12
     spriteID: f2a2f838aad61694e94d395c701c0f1c
     spriteBone: []
     spriteOutline: []
@@ -167,8 +167,8 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 2
-        y: 10
+        x: 0
+        y: 0
         width: 28
         height: 12
       spriteId: f2a2f838aad61694e94d395c701c0f1c
@@ -203,7 +203,9 @@ ScriptedImporter:
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
   generatePhysicsShape: 0
-  secondarySpriteTextures: []
+  secondarySpriteTextures:
+  - name: _Emission
+    texture: {fileID: -8328923581568760697, guid: a6d9c0e852b9a534ea6682b4afd888bf, type: 3}
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 28, y: 12}
   previousTextureSize: {x: 64, y: 32}
