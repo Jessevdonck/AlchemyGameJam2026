@@ -41,17 +41,24 @@ public class BrewingStation : Interactable
 
     private void HandleInteract()
     {
+        Debug.Log("Interact check 1");
         if (_playerInventory == null) return;
-
+        Debug.Log("Interact check 2");
         if (_isReady)
         {
+            Debug.Log("Interact check 3");
             CollectPotion();
             return;
         }
-
-        if (brewingUI.IsOpen) return; 
-
+        Debug.Log("Interact check 4");
+        if (brewingUI.IsOpen)
+        {
+            brewingUI.Close();
+            return;
+        }
+        Debug.Log("Interact check 5");
         brewingUI.Open(this, _playerInventory);
+        Debug.Log("Interact check6 ");
     }
 
     public void StartBrewing(PotionBase potion)
@@ -93,13 +100,13 @@ public class BrewingStation : Interactable
         }
     }
 
-    protected void ShowOutline()
+    protected override void ShowOutline()
     {
         var player = GameObject.FindGameObjectWithTag("Player");
         _playerInventory = player.GetComponent<Inventory>();
     }
 
-    protected void HideOutline()
+    protected override void HideOutline()
     {
         _playerInventory = null;
     }

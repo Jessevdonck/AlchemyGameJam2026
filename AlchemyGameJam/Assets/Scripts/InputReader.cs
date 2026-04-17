@@ -58,11 +58,7 @@ public class InputReader : MonoBehaviour
         controls.Player.Dash.performed        += _onDash;
         controls.Player.UsePotion.performed   += _onUsePotion;
         controls.Player.CyclePotion.performed += _onCyclePotion;
-        controls.Player.Interact.performed    += _onInteract = ctx =>
-        {
-            Debug.Log("INTERACT PRESSED");
-            OnInteract?.Invoke();
-        };
+        controls.Player.Interact.performed += _onInteract;
         controls.Player.AbilityOne.performed  += _onAbilityOne;
         controls.Player.AbilityTwo.performed  += _onAbilityTwo;
         controls.Player.AbilityThree.performed += _onAbilityThree;

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Player;
@@ -8,9 +9,15 @@ public class BrewingUI : MonoBehaviour
     public Transform buttonParent;
     public Button buttonPrefab;
 
-    public bool IsOpen => root.activeSelf;
+    public bool IsOpen;
     private BrewingStation _station;
     private Inventory _inventory;
+
+    private void Awake()
+    {
+        root.SetActive(false);
+        IsOpen = false;
+    }
 
     public void Open(BrewingStation station, Inventory inventory)
     {
@@ -20,9 +27,10 @@ public class BrewingUI : MonoBehaviour
         ClearButtons(); 
 
         root.SetActive(true);
+        IsOpen = true;
         GenerateButtons();
     }
-    
+
     private void ClearButtons()
     {
         foreach (Transform child in buttonParent)
@@ -32,7 +40,7 @@ public class BrewingUI : MonoBehaviour
     public void Close()
     {
         root.SetActive(false);
-
+        IsOpen = false;
         foreach (Transform child in buttonParent)
             Destroy(child.gameObject);
     }
