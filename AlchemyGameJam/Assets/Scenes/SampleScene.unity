@@ -11290,7 +11290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrewingStation
   _collider: {fileID: 995349564}
-  availablePotions: []
+  availablePotions:
+  - {fileID: 11400000, guid: eeb1f82627ed6464592249f1c55a0e80, type: 2}
   brewTime: 3
   progressBar: {fileID: 60365445}
   progressSlider: {fileID: 514235005}
@@ -11491,7 +11492,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000139a8c17
@@ -12464,6 +12465,7 @@ MonoBehaviour:
   root: {fileID: 1540621294}
   buttonParent: {fileID: 2077354437}
   buttonPrefab: {fileID: 2695657543480744926, guid: 79bb2314c348c5841ae1b9d1fd1aca32, type: 3}
+  IsOpen: 0
 --- !u!1001 &1665729757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13314,7 +13316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2077354437
 RectTransform:
   m_ObjectHideFlags: 0
