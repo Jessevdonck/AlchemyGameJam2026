@@ -10398,10 +10398,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3215094936124900209, guid: bba689ffc0b9a4f4aafa3f6ec0b7298c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1491164705}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bba689ffc0b9a4f4aafa3f6ec0b7298c, type: 3}
 --- !u!1 &921182134 stripped
 GameObject:
@@ -11958,23 +11955,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1491164698 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3215094936124900209, guid: bba689ffc0b9a4f4aafa3f6ec0b7298c, type: 3}
-  m_PrefabInstance: {fileID: 844393084}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1491164705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491164698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49fb6ef563844308ba3e4e193e80911f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProjectileAnimation
 --- !u!1 &1508464719
 GameObject:
   m_ObjectHideFlags: 0
