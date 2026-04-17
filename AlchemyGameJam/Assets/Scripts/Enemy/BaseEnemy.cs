@@ -1,4 +1,5 @@
 using Enemy;
+using Enum;
 using Interfaces;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageable
     [SerializeField] private GameObject lootPickupPrefab;
     [SerializeField] private int lootRolls = 1; //aantal drops
 
+    public Team team = Team.Enemy;
+    
     protected Health health;
     private IEnemyTracker tracker;
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4916699590270258548}
   - component: {fileID: 664666878418723434}
   - component: {fileID: 558142764940420045}
+  - component: {fileID: 5600560674789601034}
   m_Layer: 3
   m_Name: EnemyRanged
   m_TagString: Untagged
@@ -184,6 +185,12 @@ MonoBehaviour:
   lootTable: {fileID: 11400000, guid: 5ff6a28d4e5a6e54ea4dbfc395a35911, type: 2}
   lootPickupPrefab: {fileID: 811814359414138606, guid: 0dd9cf9ee88bb8e4684dc8bbebd5ee82, type: 3}
   lootRolls: 1
+  team: 1
+  separationRadius: 4
+  separationStrength: 2
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
   bulletPrefab: {fileID: 3215094936124900209, guid: bba689ffc0b9a4f4aafa3f6ec0b7298c, type: 3}
 --- !u!114 &558142764940420045
 MonoBehaviour:
@@ -197,4 +204,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04bae4c2e3946cbb10eb1506aab10e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 100
+  maxHealth: 30
+--- !u!114 &5600560674789601034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661806698554891805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c4d7b47af54b8fb63746e4073f3b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TeamHolder
+  team: 1
