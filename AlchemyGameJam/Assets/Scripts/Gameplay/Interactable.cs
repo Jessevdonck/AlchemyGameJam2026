@@ -12,21 +12,16 @@ public class Interactable : MonoBehaviour
     [SerializeField] private float outlineSize = 2f;
 
     private Material _material;
-    private static readonly int OutlineEnabled = Shader.PropertyToID("_OutlineEnabled");
-    private static readonly int OutlineColor   = Shader.PropertyToID("_OutlineColor");
-    private static readonly int OutlineSizeProp = Shader.PropertyToID("_OutlineSize");
+    private static readonly int OutlineEnabled = Shader.PropertyToID("_OutlineState");
+    private static readonly int OutlineColor   = Shader.PropertyToID("_Outline_Color");
 
     private void Awake()
     {
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        
-        _material = new Material(Shader.Find("Custom/SpriteOutline"));
+        _material = gameObject.GetComponent<Renderer>().material;
         spriteRenderer.material = _material;
 
         _material.SetFloat(OutlineEnabled, 0f);
         _material.SetColor(OutlineColor, outlineColor);
-        _material.SetFloat(OutlineSizeProp, outlineSize);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -43,10 +38,10 @@ public class Interactable : MonoBehaviour
 
     private void ShowOutline()
     {
-        _material.SetFloat(OutlineEnabled, 1f);
+        _material.SetFloat(OutlineEnabled, 0.03125f);
     }
 
-    private void HideOutline()
+    private void HideOutline()  
     {
         _material.SetFloat(OutlineEnabled, 0f);
     }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 455b5bec874af94439148057a0804cc6
+guid: b0eeaa02a9857eb4ab692d6432892f72
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 32
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639119761041038681
+  platformSettingsDirtyTick: 639119790789337977
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,19 +127,19 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Enemy_Placeholder
+  - name: altar
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: -0.8333334}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
-      x: 4
+      x: 3
       y: 4
-      width: 26
-      height: 26
-    spriteID: 53fc2f92f8f8a294a8440198dc3b5960
+      width: 30
+      height: 13
+    spriteID: f2a2f838aad61694e94d395c701c0f1c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 4011351428
+      value0: 613656554
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Enemy_Placeholder
+    name: altar
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Enemy_Placeholder
+    - name: altar
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 3
-        y: 3
-        width: 26
-        height: 26
-      spriteId: 53fc2f92f8f8a294a8440198dc3b5960
+        x: 2
+        y: 10
+        width: 28
+        height: 12
+      spriteId: f2a2f838aad61694e94d395c701c0f1c
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -206,4 +206,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 32, y: 32}
-  previousTextureSize: {x: 64, y: 64}
+  previousTextureSize: {x: 64, y: 32}

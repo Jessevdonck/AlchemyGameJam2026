@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 namespace ScriptableObjects.Abilities
@@ -7,8 +8,8 @@ namespace ScriptableObjects.Abilities
     {
         public GameObject fireballPrefab;
 
-        public int damage;
-        public float speed;
+        public int baseDamage;
+        public int speed;
         
         protected override void Use(GameObject user, Vector2 mousePos)
         {
@@ -22,10 +23,11 @@ namespace ScriptableObjects.Abilities
             );
 
             Projectile projectile = fireball.GetComponent<Projectile>();
-            if (projectile != null)
-            {
-                projectile.Init(damage, user, dir, speed);
-            }
+            
+            
+            PlayerStats playerStats = user.GetComponent<PlayerStats>();
+            projectile.Init(playerStats.CalculateDamage(baseDamage), user, dir, speed);
+
         }
     }
 }

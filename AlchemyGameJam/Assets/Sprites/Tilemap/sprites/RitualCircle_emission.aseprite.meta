@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 455b5bec874af94439148057a0804cc6
+guid: e99f0865e1b6d6144ad0fa1ed3914dc0
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -36,7 +36,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 32
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639119761041038681
+  platformSettingsDirtyTick: 639120149709300183
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,19 +127,19 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Enemy_Placeholder
+  - name: RitualCircle_emission
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: -0.041666668}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 26
-      height: 26
-    spriteID: 53fc2f92f8f8a294a8440198dc3b5960
+      width: 64
+      height: 48
+    spriteID: 4dbdfb561f869e24a9932327915ea4c9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 4011351428
+      value0: 508315595
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Enemy_Placeholder
+    name: RitualCircle_emission
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Enemy_Placeholder
+    - name: RitualCircle_emission
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 3
-        y: 3
-        width: 26
-        height: 26
-      spriteId: 53fc2f92f8f8a294a8440198dc3b5960
+        x: 2
+        y: 2
+        width: 64
+        height: 48
+      spriteId: 4dbdfb561f869e24a9932327915ea4c9
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,8 +181,8 @@ ScriptedImporter:
   - name: DefaultTexturePlatform
     overridden: 0
     ignorePlatformSupport: 0
-    maxTextureSize: 16384
-    resizeAlgorithm: 0
+    maxTextureSize: 1024
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -205,5 +205,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
-  previousTextureSize: {x: 64, y: 64}
+  canvasSize: {x: 68, y: 52}
+  previousTextureSize: {x: 128, y: 64}

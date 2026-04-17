@@ -17,7 +17,6 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log(CurrentHealth);
         CurrentHealth -= damage;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
 

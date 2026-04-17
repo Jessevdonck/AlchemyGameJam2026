@@ -54,5 +54,12 @@ namespace Player.AbilitySystem
         {
             return _abilities[index] ? _abilities[index] : null;
         }
+
+        public void GetAbility(AbilityBase ab)
+        {
+            var amount = _abilities.Count;
+            if(amount >= 4) return;
+            _abilities[amount] = ab;
+        }
     }
 }

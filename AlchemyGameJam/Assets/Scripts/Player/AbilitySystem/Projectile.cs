@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float damage { get; private set; }
+    public float damage { get; set; }
 
     private GameObject owner;
     private Team ownerTeam;
