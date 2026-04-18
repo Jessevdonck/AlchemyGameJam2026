@@ -15,6 +15,6 @@ MonoBehaviour:
   abilityName: vortex
   description: 
   cooldown: 1
-  icon: {fileID: 3210572015443511947, guid: 50f2c2b8c27e5344884535cca82d7f05, type: 3}
+  icon: {fileID: -903826698, guid: 22ccdec5e7a622243b5796985886d5a7, type: 3}
   vortexPrefab: {fileID: 2054363301341529127, guid: 4783e835476f98a418af89e76446f590, type: 3}
   baseDamage: 4

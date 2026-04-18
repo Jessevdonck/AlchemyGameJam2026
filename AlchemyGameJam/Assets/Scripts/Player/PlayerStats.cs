@@ -1,6 +1,7 @@
 using System;
 using Gameplay;
 using Interfaces;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -29,6 +30,7 @@ namespace Player
         private float _pctHP, _pctAtk, _pctDef, _pctSpd, _pctDmgMul, _pctCDHaste;
 
         public event Action<float> OnHealthChanged;
+        public event Action OnDied;
         
         void Awake()
         {
@@ -106,6 +108,7 @@ namespace Player
     private void Die()
     {
         Debug.Log("Player Died");
+        OnDied?.Invoke();
     }
 
     public bool IsAlive => CurrentHP > 0f;

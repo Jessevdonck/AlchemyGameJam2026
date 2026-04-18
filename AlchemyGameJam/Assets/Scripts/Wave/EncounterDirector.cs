@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Gameplay;
 using UnityEngine;
 using Interfaces;
+using Player;
+using Random = UnityEngine.Random;
 
 public class EncounterDirector : MonoBehaviour, IEnemyTracker
 {
@@ -40,6 +43,8 @@ public class EncounterDirector : MonoBehaviour, IEnemyTracker
     private int aliveEnemies;
     private int encounterIndex;
     private float remainingBudget;
+
+    public Action<int> OnRoundChanged;
 
     private void Start()
     {
@@ -135,9 +140,10 @@ public class EncounterDirector : MonoBehaviour, IEnemyTracker
         {
             encounterIndex++;
 
+            OnRoundChanged?.Invoke(encounterIndex);
+            
             float budget = baseBudget * Mathf.Pow(budgetGrowth, encounterIndex);
             
-
             yield return StartCoroutine(RunEncounter(budget));
             
             yield return new WaitForSeconds(3f);
@@ -180,7 +186,22 @@ public class EncounterDirector : MonoBehaviour, IEnemyTracker
             yield return null;
         }
 
+        CollectAllLoot();
+        
         RitualSystem.Instance.TriggerRitual();
+    }
+    
+    void CollectAllLoot()
+    {
+        var playerInv = FindObjectOfType<Inventory>();
+        if (playerInv == null) return;
+
+        var pickups = FindObjectsOfType<LootPickup>();
+
+        foreach (var loot in pickups)
+        {
+            loot.FlyTo(playerInv.transform);
+        }
     }
 
     IEnumerator SpawnBurst(float pressure)

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using GlobalManagers.Timer;
 using ScriptableObjects.Abilities;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,11 +10,10 @@ namespace UI.Abilities
     {
         [Header("UI References")] 
         [SerializeField] private Image[] _abilityImages;
-        
         [SerializeField] private Image[] _abilityCooldowns;
 
         public List<AbilityBase> abilities;
-        
+
         private void Update()
         {
             UpdateAbilities();
@@ -23,29 +21,43 @@ namespace UI.Abilities
 
         private void UpdateAbilities()
         {
-            for(int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (i < abilities.Count)
                 {
                     var ab = abilities[i];
+
+                    // --- Icon ---
                     _abilityImages[i].sprite = ab.icon;
                     _abilityImages[i].color = Color.white;
-                    _abilityCooldowns[i].color = Color.white;
-                    _abilityCooldowns[i].rectTransform.transform.localScale = new Vector3(1, 1 - ab.progressPercentage, 1);
+
+                    // --- Cooldown overlay ---
+                    var cd = _abilityCooldowns[i];
+
+                    cd.sprite = ab.icon; // zelfde icon gebruiken
+                    cd.color = new Color(0f, 0f, 0f, 0.8f); // donker overlay
+
+                    cd.type = Image.Type.Filled;
+                    cd.fillMethod = Image.FillMethod.Vertical;
+                    cd.fillOrigin = (int)Image.OriginVertical.Bottom;
+
+                    cd.fillAmount = 1f - ab.progressPercentage;
                 }
                 else
                 {
-                    _abilityImages[i].color = Color.clear;
                     _abilityImages[i].sprite = null;
+                    _abilityImages[i].color = Color.clear;
+
+                    _abilityCooldowns[i].sprite = null;
                     _abilityCooldowns[i].color = Color.clear;
+                    _abilityCooldowns[i].fillAmount = 0f;
                 }
             }
         }
-        
 
         public void ClearSlot()
         {
-            
+            abilities.Clear();
         }
     }
 }

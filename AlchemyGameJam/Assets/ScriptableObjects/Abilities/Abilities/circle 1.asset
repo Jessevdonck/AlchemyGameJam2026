@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: Fireball Circle
   description: circle of fireballs
   cooldown: 5
-  icon: {fileID: 4927899798430435908, guid: 50f2c2b8c27e5344884535cca82d7f05, type: 3}
+  icon: {fileID: -1912867171, guid: 22ccdec5e7a622243b5796985886d5a7, type: 3}
   fireballPrefab: {fileID: 3215094936124900209, guid: bba689ffc0b9a4f4aafa3f6ec0b7298c, type: 3}
   baseDamage: 5
   speed: 10

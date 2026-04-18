@@ -87,17 +87,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (dashClip != null && audioSource != null)
         {
-            audioSource.pitch = 1f + Random.Range(-0.1f, 0.1f); 
+            audioSource.pitch = 1f + Random.Range(-0.1f, 0.1f);
             audioSource.PlayOneShot(dashClip, 0.1f);
         }
-
-        col.enabled = false;
 
         rb.linearVelocity = dashDir * dashForce;
 
         yield return new WaitForSeconds(dashTime);
-
-        col.enabled = true;
+        
         isDashing = false;
 
         yield return new WaitForSeconds(dashCooldown);

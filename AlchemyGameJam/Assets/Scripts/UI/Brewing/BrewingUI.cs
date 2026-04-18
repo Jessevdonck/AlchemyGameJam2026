@@ -1,14 +1,13 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 using Player;
 using ScriptableObjects.Inventory;
 
 public class BrewingUI : MonoBehaviour
 {
     public GameObject root;
-    public Transform buttonParent;
-    public Button buttonPrefab;
+    public Transform cardParent;
+    public PotionCardUI cardPrefab;
 
     public bool IsOpen;
     private BrewingStation _station;
@@ -25,16 +24,17 @@ public class BrewingUI : MonoBehaviour
         _station = station;
         _inventory = inventory;
 
-        ClearButtons(); 
+        ClearCards();
 
         root.SetActive(true);
         IsOpen = true;
-        GenerateButtons();
+
+        GenerateCards();
     }
 
-    private void ClearButtons()
+    private void ClearCards()
     {
-        foreach (Transform child in buttonParent)
+        foreach (Transform child in cardParent)
             Destroy(child.gameObject);
     }
 
@@ -42,20 +42,15 @@ public class BrewingUI : MonoBehaviour
     {
         root.SetActive(false);
         IsOpen = false;
-        foreach (Transform child in buttonParent)
-            Destroy(child.gameObject);
+        ClearCards();
     }
 
-    private void GenerateButtons()
+    private void GenerateCards()
     {
         foreach (var potion in _station.availablePotions)
         {
-            var btn = Instantiate(buttonPrefab, buttonParent);
-
-            var text = btn.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-            text.text = $"{potion.potionName} ({potion.costAmount})";
-
-            btn.onClick.AddListener(() => TryBrew(potion));
+            var card = Instantiate(cardPrefab, cardParent);
+            card.Setup(potion, TryBrew);
         }
     }
 
@@ -63,7 +58,7 @@ public class BrewingUI : MonoBehaviour
     {
         if (!_inventory.TrySpendResource(potion.costResource, potion.costAmount))
         {
-            Debug.Log("Not enough sulfur");
+            Debug.Log("Not enough resource");
             return;
         }
 
